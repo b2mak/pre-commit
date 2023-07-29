@@ -21,5 +21,4 @@ jobs:
           fetch-depth: 0
 
       - name: Run pre-commit
-        working-directory: ./$GITHUB_WORKSPACE
         run: pre-commit run --from-ref origin/HEAD --to-ref HEAD
