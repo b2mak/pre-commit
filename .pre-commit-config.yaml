@@ -16,6 +16,10 @@ repos:
     rev: v3.7.0-1
     hooks:
       - id: shfmt
+        args: [-w, -s, -bn, -i=2]
+        # Reset types to all text files so we can format dockerfiles as well
+        types: [text]
+        types_or: [shell, dockerfile]
   - repo: https://github.com/executablebooks/mdformat
     rev: 0.7.16
     hooks:
@@ -25,7 +29,8 @@ repos:
       additional_dependencies:
       - mdformat-gfm
       - mdformat-tables
-  - repo: https://github.com/doublify/pre-commit-rust
-    rev: v1.0
-    hooks:
-      - id: fmt
+exclude: |
+  (?x)^(
+    .*\.patch$|
+    .*\.test\.(j|t)sx?\.snap$
+  )$
